@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrinho de Compras</title>
+  <link rel="stylesheet" href="e-commerceCarrinho.css">
+</head>
+
+<body>
+
+
+  <h1>Carrinho de Compras</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Produto</th>
+        <th>Preço</th>
+        <th>Quantidade</th>
+        <th>Total</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody id="cart-items">
+      <!-- Os itens do carrinho serão adicionados dinamicamente aqui -->
+    </tbody>
+    <tfoot>
+      <tr class="total">
+        <td colspan="3">Total da Compra:</td>
+        <td id="total-price">R$ 0.00</td>
+        <td></td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <label for="coupon">Cupom de Desconto:</label>
+  <input type="text" id="coupon" placeholder="Insira o cupom">
+
+  <button id="apply-coupon">Aplicar Cupom</button>
+
+  <button id="finish-purchase" class="hide">Finalizar Compra</button>
+
+  <!-- Div para exibir a mensagem de compra finalizada -->
+  <div class="overlay" id="overlay">
+    <div class="message">
+      <p>Compra finalizada! Tenha um bom dia!</p>
+    </div>
+  </div>
+
+  <span id="user-name"></span>
+
+  <script src="e-commerceCarrinho.js"></script>
+</body>
+
+</html>

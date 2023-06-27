@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+    <title>Loja de Jogos</title>
+    <link rel="stylesheet" href="e-commerceHome.css">
+</head>
+
+<body>
+    <div id="backgroundHeader" style="display: flex; justify-content: center; align-items: center; ">
+        <img src="banner.jpg" alt="backgroundHeader" height="200px" width="100%">
+    </div>
+
+    <!-- Menu principal -->
+    <nav style="margin-bottom: 20px;">
+        <ul>
+            <li><a href="#">Início</a></li>
+            <li><a href="e-commercePaginaProdutos.html">Produtos </a></li>
+            <li><a href="e-commerceCarrinho.html">Carrinho</a></li>
+            <li><a href="e-commerceContato.html">Contato</a></li>
+            <li style="float:right"><a href="#" id="login-btn">Entrar</a></li>
+        </ul>
+    </nav>
+
+    <button id="logout-btn">Sair</button>
+
+    <!-- Banner carrossel de imagens -->
+
+    <div id="banner-carousel" class="carousel">
+
+        <img src="avatar.jpg" alt="carousel-image" data-url="e-commercePaginaProdutos.html">
+        <img src="madagascar.jpg" alt="carousel-image" data-url="e-commercePaginaProdutos.html">
+        <img src="horizon.jpeg" alt="carousel-image" data-url="e-commercePaginaProdutos.html">
+    </div>
+
+    <div class="carousel-buttons">
+        <button class="carousel-button prev">Anterior</button>
+        <button class="carousel-button next">Próximo</button>
+    </div>
+
+
+
+    <footer class="sticky-footer">
+        <div class="footer-content">
+            <p>Entre em contato: contato@lojadejogos.com</p>
+        </div>
+    </footer>
+
+    <!-- Produtos em destaque -->
+    <section id="produtos-destaque" style="margin-bottom: 100px;">
+        <h3 style="text-align: center;">Produtos em Destaque</h3>
+        <div class="produto product-container">
+            <img src="watchdogs.jpg" alt="Produto 1">
+            <p class="produto-titulo"><strong>Watch Dogs Legion</strong></p>
+            <p>R$ 159,90</p>
+            <button onclick="redirecionar()" class="buy-btn">Ir para produtos</button>
+        </div>
+        <div class="produto product-container">
+            <img src="dead.jpg" alt="Produto 2">
+            <p class="produto-titulo"><strong>Guardiões da Galaxia</strong></p>
+            <p>R$ 350,00</p>
+            <button onclick="redirecionar()" class="buy-btn">Ir para produtos</button>
+        </div>
+        <div class="produto product-container">
+            <img src="valhalla.jpg" alt="Produto 3">
+            <p class="produto-titulo"><strong>Assassin's Creed Valhalla</strong></p>
+            <p>R$ 199,90</p>
+            <button onclick="redirecionar()" class="buy-btn">Ir para produtos</button>
+        </div>
+    </section>
+    <!-- Login overlay -->
+    <div class="login-overlay">
+        <div class="login-box">
+            <h2>Entrar</h2>
+            <input type="text" placeholder="Usuário" id="login-usuario">
+            <input type="password" placeholder="Senha" id="login-senha">
+            <button id="login-submit">Entrar</button>
+            <p>Não possui uma conta? <a href="#" id="cadastro-link">Cadastre-se</a></p>
+            <button class="cancelar" id="login-cancel">Cancelar</button>
+        </div>
+    </div>
+
+    <!-- Cadastro overlay -->
+    <div class="cadastro-overlay">
+        <div class="cadastro-box">
+            <h2>Cadastro</h2>
+            <input type="text" placeholder="Nome" id="cadastro-nome" required>
+            <input type="email" placeholder="E-mail" id="cadastro-email" required>
+            <input type="text" placeholder="CPF" id="cadastro-cpf" pattern="[0-9]{11}"
+                title="Digite um CPF válido com 11 dígitos numéricos" required>
+            <input type="text" placeholder="CEP" id="cadastro-cep" pattern="[0-9]{8}"
+                title="Digite um CEP válido com 8 dígitos numéricos" required>
+            <input type="text" placeholder="Rua" id="cadastro-rua" required>
+            <input type="text" placeholder="Bairro" id="cadastro-bairro" required>
+            <input type="text" placeholder="Cidade" id="cadastro-cidade" required>
+            <input type="text" placeholder="UF" id="cadastro-uf" required>
+            <input type="text" placeholder="Número" id="cadastro-numero" min="0" max="9999" required>
+            <input type="date" placeholder="Data de Nascimento" id="cadastro-data-nascimento" required>
+            <input type="password" placeholder="Senha" id="cadastro-senha" required>
+            <button id="cadastro-submit">Cadastrar</button>
+            <p>Já possui uma conta? <a href="#" id="login-link">Login</a></p>
+            <button class="cancelar" id="cadastro-cancel">Cancelar</button>
+        </div>
+    </div>
+
+    <div class="alert-overlay">
+        <div class="alert-box">
+            <p id="alert-message"></p>
+            <button class="close-btn">Fechar</button>
+        </div>
+        </div>
+    <script src="e-commerceHome.js"></script>
+</body>
+
+</html>

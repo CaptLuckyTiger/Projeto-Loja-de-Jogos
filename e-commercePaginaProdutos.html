@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página de Produtos</title>
+  <link rel="stylesheet" href="e-commercePaginaProdutos.css">
+</head>
+
+<body>
+  <div class="header">
+    <h3>Partilheira de Jogos</h3>
+  </div>
+
+  <button class="sort-button" onclick="sortProducts()">Filtrar nome</button>
+  <button class="sort-button sort-button-name" onclick="sortProducts2()">Filtrar preço</button>
+
+  <div class="container">
+    <div class="product-grid">
+      <div class="product" data-name="Super Mario Bros" data-price="150" data-produtora="Nintendo"
+        data-genero="Plataforma" data-descricao="Ajude Mario a resgatar a princesa Peach!" data-imagem="mario.jpg">
+
+        <img src="mario.jpg" alt="Super Mario Bros " class="product-image">
+        <h3>Super Mario Bros Deluxe Switch</h3>
+        <p>R$ 150</p>
+        <button class="buy-btn">Comprar</button>
+      </div>
+      <div class="product" data-name="Dying Light" data-price="89,99" data-produtora="Techland"
+        data-genero="Ação, Sobrevivência, Mundo Aberto" data-descricao="Jogo de Zumbi" data-imagem="dynglight.jpg">
+        <img src="dynglight.jpg" alt="Dying Light" class="product-image">
+        <h3>Dying Light</h3>
+        <p>R$ 89,99</p>
+        <button class="buy-btn">Comprar</button>
+      </div>
+
+      <div class="product" data-name="Mortal Kombat 11" data-price="95,00" data-produtora="NetherRealm Studios"
+        data-genero="Luta"
+        data-descricao=" Mortal Kombat 11 é um jogo de luta desenvolvido pela NetherRealm Studios. Ele faz parte da icônica série de jogos de luta Mortal Kombat e apresenta uma jogabilidade intensa, combates viscerais e uma ampla variedade de personagens icônicos. Os jogadores podem participar de lutas um contra um ou em equipes, desferindo golpes especiais e fatalities brutais em seus oponentes."
+        data-imagem="mortalkombat.jpg">
+        <img src="mortalkombat.jpg" alt="Mortal Kombat 11" class="product-image">
+        <h3>Mortal Kombat 11</h3>
+        <p>R$ 95,00</p>
+        <button class="buy-btn">Comprar</button>
+      </div>
+
+      <div class="product" data-name="Jumanji" data-price="65,00" data-produtora="Outright Games"
+        data-genero="Ação e Aventura"
+        data-descricao="Juntem-se para uma aventura divertida no jogo recheado de ação, Jumanji, enquanto tentas sobreviver ao derradeiro desafio daqueles que que procuram deixar o seu mundo para trás!”"
+        data-imagem="jumanji.jpg">
+        <img src="jumanji.jpg" alt="Jumanji" class="product-image">
+        <h3>Jumanji</h3>
+        <p>R$ 65,00</p>
+        <button class="buy-btn">Comprar</button>
+      </div>
+
+      <div class="product" data-name="Avatar" data-price="45,99" data-produtora="Ubisfot Montreal"
+        data-genero="Ação e Aventura"
+        data-descricao="“Avatar: The Game acontece dois anos antes dos eventos do filme, onde que, os jogadores assumem o papel de Able Ryder, especialista em sinais da SecOps que chega ao mundo distante de Pandora, escolhido a dedo para participar do Programa Avatar” "
+        data-imagem="avatar.jpg">
+        <img src="avatar.jpg" alt="Avatar" class="product-image">
+        <h3>Avatar: The Game </h3>
+        <p>R$ 45,99</p>
+        <button class="buy-btn">Comprar</button>
+      </div>
+
+      <div class="product" data-name="Assassin's Creed Valhalla" data-price="320,99" data-produtora="Ubisoft Montreal"
+        data-genero="Ação e Aventura"
+        data-descricao="Em Assassin's Creed Valhalla, torne-se Eivor, um lendário invasor Viking em busca de glória. Explore a Idade das Trevas da Inglaterra enquanto ataca seus inimigos, usa armas poderosas, personaliza e aumenta o assentamento de seu clã e constrói seu poder político"
+        data-imagem="valhalla.jpg">
+        <img src="valhalla.jpg" alt="Produto 6" class="product-image">
+        <h3>Assassin's Creed Valhalla</h3>
+        <p>R$ 320,99</p>
+        <button class="buy-btn">Comprar</button>
+      </div>
+
+      <div class="product" data-name="Watch Dogs Legion" data-price="220,00" data-produtora="Ubisoft Toronto"
+        data-genero="Ação e Aventura em Terceira Pessoa"
+        data-descricao="Watch Dogs: Legion é um jogo de ação e aventura em terceira pessoa ambientado em um mundo aberto fictício de Londres. O jogo permite que o jogador recrute e jogue como qualquer pessoa que você vê na cidade. O objetivo do jogo é derrubar uma corporação corrupta que controla a cidade"
+        data-imagem="watchdogs.jpg">
+        <img src="watchdogs.jpg" alt="Watch Dogs Legion" class="product-image">
+        <h3>Watch Dogs Legion</h3>
+        <p>R$ 220,00</p>
+        <button class="buy-btn">Comprar</button>
+      </div>
+
+      <div class="product" data-name="Madagascar" data-price="120,00" data-produtora="Toys for Bob"
+        data-genero="Aventura"
+        data-descricao="Madagascar é um jogo de aventura baseado no filme de animação da DreamWorks Animation. O jogo segue os personagens do filme enquanto eles tentam escapar do zoológico de Nova York e voltar para Madagascar. O jogador controla quatro personagens diferentes ao longo do jogo e deve completar vários objetivos para progredir"
+        data-imagem="madagascar.jpg">
+        <img src="madagascar.jpg" alt="Madagascar" class="product-image">
+        <h3>Madagascar</h3>
+        <p>R$ 120,00</p>
+        <button class="buy-btn">Comprar</button>
+      </div>
+
+      <div class="product" data-name="Spider Man Miles Morales" data-price="175,00" data-produtora="Insomniac Games"
+        data-genero="Ação-Aventura"
+        data-descricao="A jogabilidade principal de Spider-Man: Miles Morales é a mesma de seu antecessor. Ele apresenta o mesmo mundo aberto, uma versão fictícia de uma Manhattan moderna, que é coberta de neve porque o jogo é ambientado durante as férias de final de ano dos Estados Unidos "
+        data-imagem="miles.jpeg">
+        <img src="miles.jpeg" alt="Spider Man Miles Morales" class="product-image">
+        <h3>Spider Man Miles Morales</h3>
+        <p>R$ 175,00</p>
+        <button class="buy-btn">Comprar</button>
+      </div>
+
+      <div class="product" data-name="Dead Island 2" data-price="350,00" data-produtora="Dambuster Studios"
+        data-genero="RPG Ação"
+        data-descricao="O jogo é um RPG de ação em primeira pessoa eletrizante, estiloso, vibrante e repleto de infecção zumbi. Explore uma Los Angeles mítica e coberta de sangue"
+        data-imagem="dead.jpg">
+        <img src="dead.jpg" alt="Dead Island 2" class="product-image">
+        <h3>Dead Island 2</h3>
+        <p>R$ 350,00</p>
+        <button class="buy-btn">Comprar</button>
+      </div>
+
+      <div class="product" data-name="Horizon Zero Dawn " data-price="160,00" data-produtora="Guerrila Games"
+        data-genero="RPG Ação Pós-Apocalíptico"
+        data-descricao="O jogo se passa em um futuro pós-apocalíptico no qual a humanidade perdeu o controle sob a cadeia alimentar e agora as florestas, planícies e as antigas civilizações humanas estão dominadas por criaturas robóticas inteligentes que simulam animais de verdade"
+        data-imagem="horizon.jpeg">
+        <img src="horizon.jpeg" alt="Horizon Zero Dawn " class="product-image">
+        <h3>Horizon Zero Dawn</h3>
+        <p>R$ 160,00</p>
+        <button class="buy-btn">Comprar</button>
+      </div>
+
+      <div class="product" data-name="Guardiões da Galaxia" data-price="280,00" data-produtora="Eidos Montréal"
+        data-genero="Ação-Aventura"
+        data-descricao="O jogo é jogado em terceira pessoa e segue o personagem Peter Quill, também conhecido como Senhor das Estrelas, enquanto ele lidera os Guardiões da Galáxia em uma missão para salvar a galáxia. O jogo apresenta uma variedade de personagens jogáveis e não jogáveis da série de quadrinhos, incluindo Drax, Gamora, Rocket Raccoon e Groot"
+        data-imagem="guardians.jpg">
+        <img src="guardians.jpg" alt="Guardiões da Galaxia" class="product-image">
+        <h3>Guardiões da Galaxia</h3>
+        <p>R$ 280,00</p>
+        <button class="buy-btn">Comprar</button>
+      </div>
+    </div>
+  </div>
+  <div class="dialog">
+  </div>
+  <div class="overlay"></div>
+
+  <div class="cart">
+    <button class="cart-btn" disabled></button>
+    <span class="cart-counter" id="cart-counter">0</span>
+    <div class="cart-items" id="cart-items"></div>
+
+  </div>
+  <script src="e-commercePaginaProdutos.js"></script>
+</body>
+
+</html>
