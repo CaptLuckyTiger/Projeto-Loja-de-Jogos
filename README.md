@@ -4,7 +4,7 @@ Este projeto foi desenvolvido para a disciplina de "Desenvolvimento Web Cliente"
 
 ## Visual Studio Code
 
-Recomendamos o uso do [Visual Studio Code](https://code.visualstudio.com/) para testar e desenvolver esta aplicação. O Visual Studio Code é um editor de código fonte leve e poderoso, que oferece diversas funcionalidades e extensões para facilitar o desenvolvimento web.
+Recomendo o uso do [Visual Studio Code](https://code.visualstudio.com/) para testar e desenvolver esta aplicação. O Visual Studio Code é um editor de código fonte leve e poderoso, que oferece diversas funcionalidades e extensões para facilitar o desenvolvimento web.
 
 [![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-Teste%20aqui-blue.svg)](https://code.visualstudio.com/)
 
