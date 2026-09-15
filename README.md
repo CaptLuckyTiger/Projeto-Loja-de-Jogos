@@ -64,13 +64,13 @@ src/
 
 ## Rotas
 
-| Rota | Tela |
-| --- | --- |
-| `/#/` | Home e produtos em destaque |
-| `/#/produtos` | Catálogo completo |
+| Rota          | Tela                           |
+| ------------- | ------------------------------ |
+| `/#/`         | Home e produtos em destaque    |
+| `/#/produtos` | Catálogo completo              |
 | `/#/carrinho` | Resumo e finalização da compra |
-| `/#/pedidos` | Histórico de pedidos |
-| `/#/contato` | Formulário de contato |
+| `/#/pedidos`  | Histórico de pedidos           |
+| `/#/contato`  | Formulário de contato          |
 
 ## Como executar
 
