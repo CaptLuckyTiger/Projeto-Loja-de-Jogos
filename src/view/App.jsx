@@ -5,6 +5,7 @@ import HomeView from './views/HomeView';
 import ProductsView from './views/ProductsView';
 import CartView from './views/CartView';
 import ContactView from './views/ContactView';
+import OrdersView from './views/OrdersView';
 
 export default function App() {
   const store = useStoreViewModel();
@@ -12,8 +13,10 @@ export default function App() {
     <Routes>
       <Route path="/" element={<HomeView store={store} />} />
       <Route path="/produtos" element={<ProductsView store={store} />} />
+      <Route path="/favoritos" element={<ProductsView store={store} favoriteOnly />} />
       <Route path="/carrinho" element={<CartView store={store} />} />
       <Route path="/contato" element={<ContactView store={store} />} />
+      <Route path="/pedidos" element={<OrdersView store={store} />} />
     </Routes>
   </Layout>;
 }

@@ -11,6 +11,9 @@ export const products = [
   { id: 'dead-island', name: 'Dead Island 2', price: 350, studio: 'Dambuster Studios', genre: 'RPG e ação', image: 'assets/dead.jpg', description: 'Explore uma Los Angeles mítica, vibrante e coberta de sangue.' },
   { id: 'horizon', name: 'Horizon Zero Dawn', price: 160, studio: 'Guerrilla Games', genre: 'RPG de ação', image: 'assets/horizon.jpeg', description: 'Descubra um futuro pós-apocalíptico dominado por criaturas robóticas.' },
   { id: 'guardians', name: 'Guardiões da Galáxia', price: 280, studio: 'Eidos Montréal', genre: 'Ação e aventura', image: 'assets/guardians.jpg', description: 'Lidere os Guardiões em uma missão para salvar a galáxia.' },
+  { id: 'doom-eternal', name: 'DOOM Eternal', price: 179.90, studio: 'id Software', genre: 'Ação e tiro', image: 'assets/doom.jpeg', description: 'Enfrente hordas demoníacas em combates velozes e intensos para salvar a Terra.' },
+  { id: 'hogwarts-legacy', name: 'Hogwarts Legacy', price: 249.90, studio: 'Avalanche Software', genre: 'RPG e aventura', image: 'assets/hogwarts.jpeg', description: 'Explore Hogwarts no século XIX e descubra o seu próprio caminho mágico.' },
+  { id: 'gta-v', name: 'Grand Theft Auto V', price: 199.90, studio: 'Rockstar Games', genre: 'Ação e mundo aberto', image: 'assets/gta0001.jpg', description: 'Explore Los Santos em uma história de crime, ambição e liberdade em um mundo aberto.' },
 ];
 
-export const featuredProducts = ['watchdogs', 'dead-island', 'valhalla'].map((id) => products.find((product) => product.id === id));
+export const featuredProducts = ['gta-v', 'watchdogs', 'dead-island'].map((id) => products.find((product) => product.id === id));

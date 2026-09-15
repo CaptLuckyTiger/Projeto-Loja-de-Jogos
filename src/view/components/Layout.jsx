@@ -6,7 +6,7 @@ export default function Layout({ store, children }) {
     <header className="site-header">
       <Link className="brand" to="/"><span className="brand-mark">CG</span><span>Checkpoint Games</span></Link>
       <nav className="main-nav">
-        {[['/', 'Início'], ['/produtos', 'Produtos'], ['/carrinho', `Carrinho (${store.cartCount})`], ['/contato', 'Contato']].map(([to, label]) => <NavLink key={to} to={to} className={({ isActive }) => isActive ? 'active' : ''}>{label}</NavLink>)}
+        {[['/', 'Início'], ['/produtos', 'Produtos'], ['/favoritos', `Favoritos (${store.favorites.length})`], ['/carrinho', `Carrinho (${store.cartCount})`], ['/pedidos', 'Pedidos'], ['/contato', 'Contato']].map(([to, label]) => <NavLink key={to} to={to} className={({ isActive }) => isActive ? 'active' : ''}>{label}</NavLink>)}
       </nav>
       <div className="account-actions">{store.user ? <><span className="user-greeting">Olá, {store.user}</span><button className="text-button" onClick={store.logout}>Sair</button></> : <button className="text-button" onClick={() => store.setAuthMode('login')}>Entrar</button>}</div>
     </header>

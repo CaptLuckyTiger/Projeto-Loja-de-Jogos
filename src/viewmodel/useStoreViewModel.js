@@ -4,10 +4,14 @@ import { storage } from '../model/storage';
 export function useStoreViewModel() {
   const [cart, setCart] = useState(storage.getCart);
   const [user, setUser] = useState(storage.getUser);
+  const [orders, setOrders] = useState(storage.getOrders);
+  const [favorites, setFavorites] = useState(storage.getFavorites);
   const [authMode, setAuthMode] = useState(null);
   const [notice, setNotice] = useState('');
 
   useEffect(() => storage.saveCart(cart), [cart]);
+  useEffect(() => storage.saveOrders(orders), [orders]);
+  useEffect(() => storage.saveFavorites(favorites), [favorites]);
 
   const cartCount = useMemo(() => cart.reduce((sum, item) => sum + item.quantity, 0), [cart]);
   const subtotal = useMemo(() => cart.reduce((sum, item) => sum + item.price * item.quantity, 0), [cart]);
@@ -29,6 +33,16 @@ export function useStoreViewModel() {
 
   function removeFromCart(id) { setCart((current) => current.filter((item) => item.id !== id)); }
   function clearCart() { setCart([]); }
+  function placeOrder(details) {
+    const order = { id: `CP-${Date.now().toString(36).toUpperCase()}`, createdAt: new Date().toISOString(), customer: user, items: cart, subtotal, ...details };
+    setOrders((current) => [order, ...current]);
+    setCart([]);
+    setNotice(`Pedido ${order.id} confirmado.`);
+    return order;
+  }
+  function toggleFavorite(id) {
+    setFavorites((current) => current.includes(id) ? current.filter((favoriteId) => favoriteId !== id) : [...current, id]);
+  }
 
   function login(name) {
     const cleanName = name.trim();
@@ -39,5 +53,5 @@ export function useStoreViewModel() {
   function logout() { storage.clearUser(); setUser(''); setNotice('Você saiu da sua conta.'); }
   function register(data) { login(data.name); }
 
-  return { cart, cartCount, subtotal, user, authMode, notice, setAuthMode, setNotice, addToCart, updateQuantity, removeFromCart, clearCart, login, register, logout };
+  return { cart, cartCount, subtotal, user, orders, favorites, authMode, notice, setAuthMode, setNotice, addToCart, updateQuantity, removeFromCart, clearCart, placeOrder, toggleFavorite, login, register, logout };
 }
