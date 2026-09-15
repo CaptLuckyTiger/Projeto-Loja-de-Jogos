@@ -58,10 +58,10 @@ src/
 
 | Rota | Tela |
 | --- | --- |
-| `/` | Home e produtos em destaque |
-| `/produtos` | Catálogo completo |
-| `/carrinho` | Resumo e finalização da compra |
-| `/contato` | Formulário de contato |
+| `/#/` | Home e produtos em destaque |
+| `/#/produtos` | Catálogo completo |
+| `/#/carrinho` | Resumo e finalização da compra |
+| `/#/contato` | Formulário de contato |
 
 ## Como executar
 
@@ -81,7 +81,7 @@ npm run build
 npm run preview
 ```
 
-Como o projeto pode ser executado dentro de uma pasta sincronizada pelo OneDrive, o Vite está configurado para usar polling no watcher e evitar erros `EBUSY` em arquivos bloqueados durante a sincronização.
+Como o projeto pode ser executado dentro de uma pasta sincronizada pelo OneDrive, o Vite está configurado para usar polling no watcher e evitar erros `EBUSY` em arquivos bloqueados durante a sincronização. O build de produção é gerado em `docs/`, configuração compatível com o GitHub Pages.
 
 ## Assets
 
