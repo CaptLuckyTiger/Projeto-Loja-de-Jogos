@@ -13,7 +13,14 @@ export default function HomeView({ store }) {
   return (
     <>
       <section className="hero">
-        <img className="hero-wallpaper" src={wallpaperUrl} alt="" aria-hidden="true" />
+        <img
+          className="hero-wallpaper"
+          src={wallpaperUrl}
+          alt=""
+          aria-hidden="true"
+          fetchPriority="high"
+          loading="eager"
+        />
         <div className="hero-copy">
           <span className="eyebrow">Sua próxima campanha começa aqui</span>
           <h1>Jogos que ficam na memória.</h1>
