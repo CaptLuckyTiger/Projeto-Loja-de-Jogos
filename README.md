@@ -1,21 +1,90 @@
-# Projeto Loja de Jogos
+# Checkpoint Games
 
-Este projeto foi desenvolvido para a disciplina de "Desenvolvimento Web Cliente". Trata-se de um site de loja de jogos criado utilizando HTML, CSS e JavaScript.
+Loja de jogos autoral refatorada de HTML, CSS e JavaScript para React + Vite. O projeto preserva os assets originais e organiza a aplicação com uma arquitetura inspirada em MVVM, separando dados, regras de estado e interface.
 
-## Visual Studio Code
+## Sobre o projeto
 
-Recomendo o uso do [Visual Studio Code](https://code.visualstudio.com/) para testar e desenvolver esta aplicação. O Visual Studio Code é um editor de código fonte leve e poderoso, que oferece diversas funcionalidades e extensões para facilitar o desenvolvimento web.
+A Checkpoint Games oferece uma experiência simples de descoberta e compra de jogos digitais. A home apresenta a seleção em destaque sobre o wallpaper synthwave `001.jpg`, enquanto o catálogo permite buscar, ordenar e consultar detalhes dos produtos.
 
-[![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-Teste%20aqui-blue.svg)](https://code.visualstudio.com/)
+## Stack
 
-> **Nota:** Certifique-se de ter a extensão [Live Preview](https://marketplace.visualstudio.com/items?itemName=xyz.local-history) instalada para obter uma visualização ao vivo atualizada enquanto trabalha no código.
+- React
+- Vite
+- React Router
+- JavaScript moderno (ES Modules)
+- CSS responsivo
+- `localStorage` para carrinho e sessão local
 
-## Executando o projeto
+## Funcionalidades
 
-1. Clone este repositório para sua máquina local ou faça o download do código-fonte.
-2. Abra o Visual Studio Code.
-3. No Visual Studio Code, navegue até o diretório onde o projeto foi clonado ou descompactado.
-4. Abra o arquivo `e-commerceHome.html` no Visual Studio Code.
-5. Com a extensão Live Preview instalada, clique com o botão direito do mouse dentro do arquivo `e-commerceHome.html` e selecione a opção "Open with Live Server" para iniciar um servidor local e visualizar o site de loja de jogos em seu navegador.
+- Home com hero visual e produtos em destaque.
+- Wallpaper principal utilizando `001.jpg`.
+- Catálogo com 12 jogos, busca por título e ordenação por nome ou preço.
+- Modal com imagem, preço, produtora, gênero e descrição do produto.
+- Carrinho persistido no navegador.
+- Controle de quantidade e remoção de itens.
+- Cupom de desconto `UTFPR`, com 15% de desconto.
+- Login e cadastro locais para liberar a finalização da compra.
+- Página de contato com confirmação de envio.
+- Layout responsivo para desktop e dispositivos móveis.
 
-Aproveite a experiência de desenvolvimento e explore o site de loja de jogos desenvolvido durante o projeto!
+## Arquitetura MVVM
+
+```text
+src/
+├── model/
+│   ├── format.js       # Formatação de valores monetários
+│   ├── products.js     # Catálogo e produtos em destaque
+│   └── storage.js      # Persistência no localStorage
+├── viewmodel/
+│   └── useStoreViewModel.js
+│                         # Estado e regras do carrinho e autenticação
+├── view/
+│   ├── components/     # Componentes reutilizáveis da interface
+│   ├── views/          # Home, produtos, carrinho e contato
+│   └── App.jsx         # Rotas da aplicação
+├── styles/
+│   └── global.css      # Design system e responsividade
+└── main.jsx            # Ponto de entrada React
+```
+
+### Responsabilidades
+
+- **Model:** representa produtos, persistência e funções de domínio simples.
+- **ViewModel:** concentra o estado compartilhado e as ações da loja.
+- **View:** renderiza as telas e encaminha eventos do usuário ao ViewModel.
+
+## Rotas
+
+| Rota | Tela |
+| --- | --- |
+| `/` | Home e produtos em destaque |
+| `/produtos` | Catálogo completo |
+| `/carrinho` | Resumo e finalização da compra |
+| `/contato` | Formulário de contato |
+
+## Como executar
+
+Pré-requisito: Node.js 20 ou superior.
+
+```bash
+npm install
+npm run dev
+```
+
+Depois, abra a URL exibida pelo Vite, normalmente `http://127.0.0.1:5173/`.
+
+Para validar a versão de produção:
+
+```bash
+npm run build
+npm run preview
+```
+
+Como o projeto pode ser executado dentro de uma pasta sincronizada pelo OneDrive, o Vite está configurado para usar polling no watcher e evitar erros `EBUSY` em arquivos bloqueados durante a sincronização.
+
+## Assets
+
+As imagens originais foram preservadas em `public/assets`. Os produtos usam as capas existentes no projeto, e `001.jpg` é aplicado como imagem de fundo principal da home.
+
+Os arquivos HTML, CSS e JavaScript da versão original foram preservados na pasta `legacy/`, junto com os assets históricos em `legacy/assets/`. A aplicação atual é iniciada pelo `index.html` do Vite.

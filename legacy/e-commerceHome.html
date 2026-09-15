@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 
 <head>
@@ -14,13 +14,13 @@
 
 <body>
     <div id="backgroundHeader" style="display: flex; justify-content: center; align-items: center; ">
-        <img src="banner.jpg" alt="backgroundHeader" height="200px" width="100%">
+        <img src="assets/$file" alt="backgroundHeader" height="200px" width="100%">
     </div>
 
     <!-- Menu principal -->
     <nav style="margin-bottom: 20px;">
         <ul>
-            <li><a href="#">Início</a></li>
+            <li><a href="#">InÃ­cio</a></li>
             <li><a href="e-commercePaginaProdutos.html">Produtos </a></li>
             <li><a href="e-commerceCarrinho.html">Carrinho</a></li>
             <li><a href="e-commerceContato.html">Contato</a></li>
@@ -34,14 +34,14 @@
 
     <div id="banner-carousel" class="carousel">
 
-        <img src="avatar.jpg" alt="carousel-image" data-url="e-commercePaginaProdutos.html">
-        <img src="madagascar.jpg" alt="carousel-image" data-url="e-commercePaginaProdutos.html">
-        <img src="horizon.jpeg" alt="carousel-image" data-url="e-commercePaginaProdutos.html">
+        <img src="assets/$file" alt="carousel-image" data-url="e-commercePaginaProdutos.html">
+        <img src="assets/$file" alt="carousel-image" data-url="e-commercePaginaProdutos.html">
+        <img src="assets/$file" alt="carousel-image" data-url="e-commercePaginaProdutos.html">
     </div>
 
     <div class="carousel-buttons">
         <button class="carousel-button prev">Anterior</button>
-        <button class="carousel-button next">Próximo</button>
+        <button class="carousel-button next">PrÃ³ximo</button>
     </div>
 
 
@@ -56,19 +56,19 @@
     <section id="produtos-destaque" style="margin-bottom: 100px;">
         <h3 style="text-align: center;">Produtos em Destaque</h3>
         <div class="produto product-container">
-            <img src="watchdogs.jpg" alt="Produto 1">
+            <img src="assets/$file" alt="Produto 1">
             <p class="produto-titulo"><strong>Watch Dogs Legion</strong></p>
             <p>R$ 159,90</p>
             <button onclick="redirecionar()" class="buy-btn">Ir para produtos</button>
         </div>
         <div class="produto product-container">
-            <img src="dead.jpg" alt="Produto 2">
-            <p class="produto-titulo"><strong>Guardiões da Galaxia</strong></p>
+            <img src="assets/$file" alt="Produto 2">
+            <p class="produto-titulo"><strong>GuardiÃµes da Galaxia</strong></p>
             <p>R$ 350,00</p>
             <button onclick="redirecionar()" class="buy-btn">Ir para produtos</button>
         </div>
         <div class="produto product-container">
-            <img src="valhalla.jpg" alt="Produto 3">
+            <img src="assets/$file" alt="Produto 3">
             <p class="produto-titulo"><strong>Assassin's Creed Valhalla</strong></p>
             <p>R$ 199,90</p>
             <button onclick="redirecionar()" class="buy-btn">Ir para produtos</button>
@@ -78,10 +78,10 @@
     <div class="login-overlay">
         <div class="login-box">
             <h2>Entrar</h2>
-            <input type="text" placeholder="Usuário" id="login-usuario">
+            <input type="text" placeholder="UsuÃ¡rio" id="login-usuario">
             <input type="password" placeholder="Senha" id="login-senha">
             <button id="login-submit">Entrar</button>
-            <p>Não possui uma conta? <a href="#" id="cadastro-link">Cadastre-se</a></p>
+            <p>NÃ£o possui uma conta? <a href="#" id="cadastro-link">Cadastre-se</a></p>
             <button class="cancelar" id="login-cancel">Cancelar</button>
         </div>
     </div>
@@ -93,18 +93,18 @@
             <input type="text" placeholder="Nome" id="cadastro-nome" required>
             <input type="email" placeholder="E-mail" id="cadastro-email" required>
             <input type="text" placeholder="CPF" id="cadastro-cpf" pattern="[0-9]{11}"
-                title="Digite um CPF válido com 11 dígitos numéricos" required>
+                title="Digite um CPF vÃ¡lido com 11 dÃ­gitos numÃ©ricos" required>
             <input type="text" placeholder="CEP" id="cadastro-cep" pattern="[0-9]{8}"
-                title="Digite um CEP válido com 8 dígitos numéricos" required>
+                title="Digite um CEP vÃ¡lido com 8 dÃ­gitos numÃ©ricos" required>
             <input type="text" placeholder="Rua" id="cadastro-rua" required>
             <input type="text" placeholder="Bairro" id="cadastro-bairro" required>
             <input type="text" placeholder="Cidade" id="cadastro-cidade" required>
             <input type="text" placeholder="UF" id="cadastro-uf" required>
-            <input type="text" placeholder="Número" id="cadastro-numero" min="0" max="9999" required>
+            <input type="text" placeholder="NÃºmero" id="cadastro-numero" min="0" max="9999" required>
             <input type="date" placeholder="Data de Nascimento" id="cadastro-data-nascimento" required>
             <input type="password" placeholder="Senha" id="cadastro-senha" required>
             <button id="cadastro-submit">Cadastrar</button>
-            <p>Já possui uma conta? <a href="#" id="login-link">Login</a></p>
+            <p>JÃ¡ possui uma conta? <a href="#" id="login-link">Login</a></p>
             <button class="cancelar" id="cadastro-cancel">Cancelar</button>
         </div>
     </div>

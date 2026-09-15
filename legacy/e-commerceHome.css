@@ -1,5 +1,5 @@
-  /* Estilos CSS */
-  /* Estilos básicos */
+﻿  /* Estilos CSS */
+  /* Estilos bÃ¡sicos */
   body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -273,7 +273,7 @@
       background-color: #f00;
   }
 
-  /* Novo CSS para os botões de compra */
+  /* Novo CSS para os botÃµes de compra */
   .buy-btn {
       flex-shrink: 0;
       margin-top: auto;
@@ -328,7 +328,7 @@
       display: none;
       position: absolute;
       top: 207px;
-      /* Altura do nome de usuário */
+      /* Altura do nome de usuÃ¡rio */
       right: 10px;
       z-index: 999;
 
@@ -362,3 +362,4 @@
       justify-content: center;
   }
 }
+

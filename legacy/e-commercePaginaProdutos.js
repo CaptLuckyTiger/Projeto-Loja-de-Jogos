@@ -1,4 +1,4 @@
-var cartItems = document.getElementById('cart-items');
+﻿var cartItems = document.getElementById('cart-items');
 var cartCounter = document.getElementById('cart-counter');
 var cartBtn = document.querySelector('.cart-btn');
 var products = document.querySelectorAll('.product');
@@ -16,23 +16,23 @@ function showDialog() {
             const descricao = product.getAttribute('data-descricao');
             const imagem = product.getAttribute('data-imagem');
 
-            // Atualize o conteúdo da caixa de diálogo com as informações do produto, incluindo a imagem
+            // Atualize o conteÃºdo da caixa de diÃ¡logo com as informaÃ§Ãµes do produto, incluindo a imagem
             dialog.innerHTML = `
   <img src="${imagem}" alt="${name}" class="product-image">
 <h3>${name}</h3>
-<p><strong>Preço:</strong> R$ ${price}</p>
+<p><strong>PreÃ§o:</strong> R$ ${price}</p>
 <p><strong>Produtora:</strong> ${produtora}</p>
-<p><strong>Gênero:</strong> ${genero}</p>
-<p><strong>Descrição:</strong> ${descricao}</p>
+<p><strong>GÃªnero:</strong> ${genero}</p>
+<p><strong>DescriÃ§Ã£o:</strong> ${descricao}</p>
   `;
 
-            // Exiba a caixa de diálogo e o overlay
+            // Exiba a caixa de diÃ¡logo e o overlay
             dialog.style.display = 'flex';
             overlay.style.display = 'block';
         });
     });
 
-    // Adicione um evento de clique ao overlay para fechar a caixa de diálogo
+    // Adicione um evento de clique ao overlay para fechar a caixa de diÃ¡logo
     const overlay = document.querySelector('.overlay');
     overlay.addEventListener('click', () => {
         dialog.style.display = 'none';
@@ -62,7 +62,7 @@ function addToCart(name, price, image) {
 
     });
 
-    // Cria o botão de remoção de item
+    // Cria o botÃ£o de remoÃ§Ã£o de item
     var removeButton = document.createElement('button');
     removeButton.textContent = 'Remover';
     removeButton.classList.add('remove-btn');
@@ -75,7 +75,7 @@ function addToCart(name, price, image) {
     cartItems.appendChild(item);
 
 
-    // Habilita o botão do carrinho de compras quando um item é adicionado
+    // Habilita o botÃ£o do carrinho de compras quando um item Ã© adicionado
     cartBtn.disabled = false;
 
 
@@ -87,15 +87,15 @@ function addToCart(name, price, image) {
 
 function verificarFinalizarCompra() {
     if (!checkoutButtonAdded) {
-        // Se o botão de finalizar compra ainda não foi adicionado
-        checkoutButtonAdded = true; // Atualiza a variável de controle para indicar que o botão foi adicionado
+        // Se o botÃ£o de finalizar compra ainda nÃ£o foi adicionado
+        checkoutButtonAdded = true; // Atualiza a variÃ¡vel de controle para indicar que o botÃ£o foi adicionado
 
         var buttonContainer = document.createElement('div');
         buttonContainer.classList.add('checkout-button-container');
 
         var button = document.createElement('button');
         button.textContent = 'Finalizar Compra';
-        button.addEventListener('click', finalizeCheckout); // substitua "finalizeCheckout" pela função que finaliza a compra
+        button.addEventListener('click', finalizeCheckout); // substitua "finalizeCheckout" pela funÃ§Ã£o que finaliza a compra
 
         buttonContainer.appendChild(button);
         cartItems.appendChild(buttonContainer);
@@ -103,10 +103,10 @@ function verificarFinalizarCompra() {
 
 
     if (checkoutButtonAdded) {
-        // Se o botão de finalizar compra já foi adicionado
+        // Se o botÃ£o de finalizar compra jÃ¡ foi adicionado
         var buttonContainer = cartItems.querySelector('.checkout-button-container');
         if (buttonContainer) {
-            cartItems.removeChild(buttonContainer); // Remove o botão existente para recriá-lo no final da fila
+            cartItems.removeChild(buttonContainer); // Remove o botÃ£o existente para recriÃ¡-lo no final da fila
         }
 
         buttonContainer = document.createElement('div');
@@ -114,7 +114,7 @@ function verificarFinalizarCompra() {
 
         var button = document.createElement('button');
         button.textContent = 'Finalizar Compra';
-        button.addEventListener('click', finalizeCheckout); // substitua "finalizeCheckout" pela função que finaliza a compra
+        button.addEventListener('click', finalizeCheckout); // substitua "finalizeCheckout" pela funÃ§Ã£o que finaliza a compra
 
         buttonContainer.appendChild(button);
         cartItems.appendChild(buttonContainer);
@@ -133,7 +133,7 @@ function finalizeCheckout() {
         var name = item.textContent.split(' - ')[0];
         var price = item.textContent.split(' - ')[1].substring(2);
         var image = item.querySelector('img').src;
-        var id = index + 1; // ID do produto (pode ser qualquer valor único)
+        var id = index + 1; // ID do produto (pode ser qualquer valor Ãºnico)
         var produto = {
             id: id,
             nome: name,
@@ -143,7 +143,7 @@ function finalizeCheckout() {
         produtos.push(produto);
     });
 
-    // Construir a URL com os parâmetros dos produtos
+    // Construir a URL com os parÃ¢metros dos produtos
     var url = 'e-commerceCarrinho.html';
     produtos.forEach(function (produto, index) {
         url += (index === 0) ? '?' : '&';
@@ -153,7 +153,7 @@ function finalizeCheckout() {
         url += '&produto_imagem' + index + '=' + encodeURIComponent(produto.imagem);
     });
 
-    // Redirecionar para a página de checkout
+    // Redirecionar para a pÃ¡gina de checkout
     window.location.href = url;
 }
 
@@ -214,10 +214,10 @@ function removeFromCart(item) {
     cartCounter.textContent = cartItemCount;
     item.parentNode.removeChild(item);
 
-    // Desabilita o botão do carrinho de compras quando todos os itens são removidos
+    // Desabilita o botÃ£o do carrinho de compras quando todos os itens sÃ£o removidos
     if (cartItemCount === 0) {
         cartBtn.disabled = true;
-        cartItems.classList.remove('show'); // Remova a classe 'show' quando não há itens no carrinho
+        cartItems.classList.remove('show'); // Remova a classe 'show' quando nÃ£o hÃ¡ itens no carrinho
     }
 }
 function toggleCartItems() {
@@ -244,3 +244,4 @@ products.forEach(function (product) {
 });
 cartBtn.addEventListener('click', toggleCartItems);
 document.querySelector('.overlay').addEventListener('click', hideDialog);
+

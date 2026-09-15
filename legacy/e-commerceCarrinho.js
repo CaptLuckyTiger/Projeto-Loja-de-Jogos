@@ -1,4 +1,4 @@
-// Função para extrair informações da URL
+﻿// FunÃ§Ã£o para extrair informaÃ§Ãµes da URL
 function extractUrlParams() {
     var params = new URLSearchParams(window.location.search);
     var cartItems = [];
@@ -10,14 +10,14 @@ function extractUrlParams() {
         var price = params.getAll("produto_preco" + key.replace("produto_id", ""));
         var imageUrl = params.getAll("produto_imagem" + key.replace("produto_id", ""));
 
-        // Verificar se há valores em todas as propriedades
+        // Verificar se hÃ¡ valores em todas as propriedades
         if (name.length > 0 && price.length > 0 && imageUrl.length > 0) {
           // Usar o primeiro valor encontrado para cada propriedade
           var item = {
             id: productId,
             name: name[0],
             price: parseFloat(price[0]),
-            quantity: 1, // Defina a quantidade inicial como 1 ou ajuste conforme necessário
+            quantity: 1, // Defina a quantidade inicial como 1 ou ajuste conforme necessÃ¡rio
             imageUrl: imageUrl[0]
           };
           cartItems.push(item);
@@ -28,7 +28,7 @@ function extractUrlParams() {
     return cartItems;
   }
 
-  // Função para renderizar os itens do carrinho
+  // FunÃ§Ã£o para renderizar os itens do carrinho
   function renderCartItems() {
     var cartItemsContainer = document.getElementById("cart-items");
     cartItemsContainer.innerHTML = "";
@@ -61,7 +61,7 @@ function extractUrlParams() {
     document.getElementById("total-price").textContent = "R$ " + totalPrice.toFixed(2);
   }
 
-  // Função para atualizar a quantidade de um item
+  // FunÃ§Ã£o para atualizar a quantidade de um item
   function updateQuantity(itemId, newQuantity) {
     for (var i = 0; i < cartItems.length; i++) {
       if (cartItems[i].id === itemId) {
@@ -73,7 +73,7 @@ function extractUrlParams() {
     renderCartItems();
   }
 
-  // Função para remover um item do carrinho
+  // FunÃ§Ã£o para remover um item do carrinho
   function removeItem(itemId) {
     itemId = itemId.toString(); // Converter para string
     cartItems = cartItems.filter(function (item) {
@@ -84,7 +84,7 @@ function extractUrlParams() {
   }
 
 
-  // Função para aplicar o cupom de desconto
+  // FunÃ§Ã£o para aplicar o cupom de desconto
   function applyCoupon() {
     var couponInput = document.getElementById("coupon");
     var couponCode = couponInput.value.trim();
@@ -95,7 +95,7 @@ function extractUrlParams() {
       totalPrice -= discount;
       document.getElementById("total-price").textContent = "R$ " + totalPrice.toFixed(2);
     } else {
-      alert("Cupom inválido.");
+      alert("Cupom invÃ¡lido.");
     }
 
     couponInput.value = "";
@@ -111,17 +111,17 @@ function extractUrlParams() {
   }
 
 
-  // Evento ao clicar no botão de aplicar cupom
+  // Evento ao clicar no botÃ£o de aplicar cupom
   document.getElementById("apply-coupon").addEventListener("click", applyCoupon);
 
 
-  // Extração dos parâmetros da URL e renderização do carrinho de compras
+  // ExtraÃ§Ã£o dos parÃ¢metros da URL e renderizaÃ§Ã£o do carrinho de compras
   var cartItems = extractUrlParams();
   renderCartItems();
 
 
   ///////////////////////////////
-  // Função para finalizar a compra
+  // FunÃ§Ã£o para finalizar a compra
   function finishPurchase() {
     // Remover todos os itens do carrinho
     cartItems = [];
@@ -131,17 +131,17 @@ function extractUrlParams() {
     var overlay = document.getElementById("overlay");
     overlay.classList.add("show");
 
-    // Esconder o botão de finalizar compra
+    // Esconder o botÃ£o de finalizar compra
     document.getElementById("finish-purchase").classList.add("hide");
   }
 
-  // Função para fechar a mensagem de compra finalizada
+  // FunÃ§Ã£o para fechar a mensagem de compra finalizada
   function closeMessage() {
     var overlay = document.getElementById("overlay");
     overlay.classList.remove("show");
   }
 
-  // Evento ao clicar no botão de finalizar compra
+  // Evento ao clicar no botÃ£o de finalizar compra
   document.getElementById("finish-purchase").addEventListener("click", finishPurchase);
 
   // Evento para fechar a mensagem de compra finalizada
@@ -155,49 +155,50 @@ function extractUrlParams() {
   function toggleFinishButton() {
     var finishButton = document.getElementById("finish-purchase");
     if (isAuthenticated()) {
-      finishButton.classList.remove("hide"); // Remova a classe "hide" para exibir o botão de finalizar
+      finishButton.classList.remove("hide"); // Remova a classe "hide" para exibir o botÃ£o de finalizar
     } else {
-      finishButton.classList.add("hide"); // Adicione a classe "hide" para ocultar o botão de finalizar
+      finishButton.classList.add("hide"); // Adicione a classe "hide" para ocultar o botÃ£o de finalizar
     }
   }
 
-  // Função para ocultar o formulário de login e atualizar o nome do usuário logado
+  // FunÃ§Ã£o para ocultar o formulÃ¡rio de login e atualizar o nome do usuÃ¡rio logado
   function hideLoginForm() {
     var userNameElement = document.getElementById("user-name");
     var finishButton = document.getElementById("finish-purchase");
 
     if (isAuthenticated()) {
       var storedUsername = localStorage.getItem("nomeUsuario");
-      userNameElement.textContent = "Olá, " + storedUsername + "!"; // Atualize o conteúdo do elemento com o nome de usuário
+      userNameElement.textContent = "OlÃ¡, " + storedUsername + "!"; // Atualize o conteÃºdo do elemento com o nome de usuÃ¡rio
 
-      finishButton.classList.remove("hide"); // Remova a classe "hide" para exibir o botão de finalizar
+      finishButton.classList.remove("hide"); // Remova a classe "hide" para exibir o botÃ£o de finalizar
     } else {
-      userNameElement.textContent = ""; // Limpe o conteúdo do elemento
+      userNameElement.textContent = ""; // Limpe o conteÃºdo do elemento
 
-      finishButton.classList.add("hide"); // Adicione a classe "hide" para ocultar o botão de finalizar
+      finishButton.classList.add("hide"); // Adicione a classe "hide" para ocultar o botÃ£o de finalizar
     }
   }
-  hideLoginForm(); // Chamar a função para ocultar o formulário de login inicialmente e atualizar o nome do usuário
+  hideLoginForm(); // Chamar a funÃ§Ã£o para ocultar o formulÃ¡rio de login inicialmente e atualizar o nome do usuÃ¡rio
   function isAuthenticated() {
     var storedUsername = localStorage.getItem("nomeUsuario");
-    return !!storedUsername; // Retorna true se o nome de usuário existir, ou false se for null ou vazio
+    return !!storedUsername; // Retorna true se o nome de usuÃ¡rio existir, ou false se for null ou vazio
   }
 
 
-  // Função para processar o login
+  // FunÃ§Ã£o para processar o login
   function login() {
     var storedUsername = localStorage.getItem("nomeUsuario");
 
     if (storedUsername) {
       isAuthenticated = true;
       hideLoginForm();
-      toggleFinishButton(); // Chamar a função para atualizar a exibição do botão de finalizar
+      toggleFinishButton(); // Chamar a funÃ§Ã£o para atualizar a exibiÃ§Ã£o do botÃ£o de finalizar
     } else {
-      alert("Você deve fornecer um nome de usuário.");
+      alert("VocÃª deve fornecer um nome de usuÃ¡rio.");
     }
   }
 
-  // Evento ao clicar no botão de login
+  // Evento ao clicar no botÃ£o de login
   document.getElementById("login-btn").addEventListener("click", login);
+
 
 

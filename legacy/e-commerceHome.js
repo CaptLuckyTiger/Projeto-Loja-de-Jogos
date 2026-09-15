@@ -1,11 +1,11 @@
-  // Código JavaScript
+﻿  // CÃ³digo JavaScript
   $(document).ready(function () {
-    // Exibir overlay de login ao clicar no botão "Login"
+    // Exibir overlay de login ao clicar no botÃ£o "Login"
     $('#login-btn').click(function () {
         $('.login-overlay').fadeIn();
     });
 
-    // Ocultar overlay de login ao clicar no botão "Cancelar"
+    // Ocultar overlay de login ao clicar no botÃ£o "Cancelar"
     $('#login-cancel').click(function () {
         $('.login-overlay').fadeOut();
     });
@@ -24,17 +24,17 @@
         });
     });
 
-    // Verificar se o usuário está logado e exibir o botão "Logout"
+    // Verificar se o usuÃ¡rio estÃ¡ logado e exibir o botÃ£o "Logout"
     if (localStorage.getItem('nomeUsuario')) {
         $('#logout-btn').show();
     }
 
-    // Ocultar overlay de cadastro ao clicar no botão "Cancelar"
+    // Ocultar overlay de cadastro ao clicar no botÃ£o "Cancelar"
     $('#cadastro-cancel').click(function () {
         $('.cadastro-overlay').fadeOut();
     });
 
-    // Função para processar o cadastro
+    // FunÃ§Ã£o para processar o cadastro
     $('#cadastro-submit').click(function () {
         var cepRegex = /^[0-9]+$/;
         var nome = $('#cadastro-nome').val();
@@ -52,42 +52,42 @@
 
 
 
-        // Validar se os campos obrigatórios não estão vazios
+        // Validar se os campos obrigatÃ³rios nÃ£o estÃ£o vazios
         if (nome.trim() === '' || email.trim() === '' || cpf.trim() === '' || cep.trim() === '' || rua.trim() === '' || bairro.trim() === '' || cidade.trim() === '' || uf.trim() === '' || numero.trim() === '' || dataNascimento.trim() === '' || senha.trim() === '') {
-            exibirAlerta('Por favor, preencha todos os campos obrigatórios.');
+            exibirAlerta('Por favor, preencha todos os campos obrigatÃ³rios.');
             return;
         }
 
-        // Validar se o e-mail está no formato correto
+        // Validar se o e-mail estÃ¡ no formato correto
         var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
-            exibirAlerta('Por favor, insira um e-mail válido.');
+            exibirAlerta('Por favor, insira um e-mail vÃ¡lido.');
             return;
         }
 
-        // Validar se o CPF possui somente números e é válido
+        // Validar se o CPF possui somente nÃºmeros e Ã© vÃ¡lido
         var cpfRegex = /^[0-9]+$/;
         if (!cpfRegex.test(cpf)) {
-            exibirAlerta('Por favor, insira um CPF válido.');
+            exibirAlerta('Por favor, insira um CPF vÃ¡lido.');
             return;
         }
         if (!validarCPF(cpf)) {
-            exibirAlerta('Por favor, insira um CPF válido.');
+            exibirAlerta('Por favor, insira um CPF vÃ¡lido.');
             return;
         }
 
-        // Validar se o CEP possui somente números
+        // Validar se o CEP possui somente nÃºmeros
         if (!cepRegex.test(cep)) {
-            exibirAlerta('Por favor, insira um CEP válido.');
+            exibirAlerta('Por favor, insira um CEP vÃ¡lido.');
             return;
         }
 
 
 
-        // Validar se a data de nascimento é válida e se a pessoa possui 18 anos ou mais
+        // Validar se a data de nascimento Ã© vÃ¡lida e se a pessoa possui 18 anos ou mais
         var dataNascimentoRegex = /^\d{4}-\d{2}-\d{2}$/;
         if (!dataNascimentoRegex.test(dataNascimento)) {
-            exibirAlerta('Por favor, insira uma data de nascimento válida.');
+            exibirAlerta('Por favor, insira uma data de nascimento vÃ¡lida.');
             return;
         }
         var dataNascimentoObj = new Date(dataNascimento);
@@ -98,21 +98,21 @@
             idade--;
         }
         if (idade < 18) {
-            exibirAlerta('É necessário ter 18 anos ou mais para se cadastrar.');
+            exibirAlerta('Ã‰ necessÃ¡rio ter 18 anos ou mais para se cadastrar.');
             return;
         }
 
-        // Validar se a senha possui pelo menos 8 dígitos
+        // Validar se a senha possui pelo menos 8 dÃ­gitos
         if (senha.length < 8) {
-            exibirAlerta('A senha deve ter no mínimo 8 caracteres.');
+            exibirAlerta('A senha deve ter no mÃ­nimo 8 caracteres.');
             return false;
         }
 
 
-        // Se todas as validações passarem, exibir uma mensagem de sucesso
+        // Se todas as validaÃ§Ãµes passarem, exibir uma mensagem de sucesso
         exibirAlerta('Cadastro realizado com sucesso!');
 
-        // Se todas as validações passaram, exibir os dados
+        // Se todas as validaÃ§Ãµes passaram, exibir os dados
         console.log('Nome: ' + nome);
         console.log('E-mail: ' + email);
         console.log('CPF: ' + cpf);
@@ -121,22 +121,22 @@
         console.log('Bairro: ' + bairro);
         console.log('Cidade: ' + cidade);
         console.log('UF: ' + uf);
-        console.log('Número: ' + numero);
+        console.log('NÃºmero: ' + numero);
         console.log('Data de Nascimento: ' + dataNascimento);
         console.log('Senha: ' + senha);
 
         console.log('O formulario foi submetido'); // teste
 
-        // Limpar os campos do formulário
+        // Limpar os campos do formulÃ¡rio
         $('input[type="text"], input[type="email"], input[type="password"], input[type="date"]').val('');
 
     });
 
-    // Função para validar CPF
+    // FunÃ§Ã£o para validar CPF
     function validarCPF(cpf) {
         cpf = cpf.replace(/[^\d]+/g, '');
         if (cpf === '') return false;
-        // Elimina CPFs inválidos conhecidos
+        // Elimina CPFs invÃ¡lidos conhecidos
         if (
             cpf.length !== 11 ||
             cpf === '00000000000' ||
@@ -152,13 +152,13 @@
         ) {
             return false;
         }
-        // Valida 1º dígito
+        // Valida 1Âº dÃ­gito
         let add = 0;
         for (let i = 0; i < 9; i++) add += parseInt(cpf.charAt(i)) * (10 - i);
         let rev = 11 - (add % 11);
         if (rev === 10 || rev === 11) rev = 0;
         if (rev !== parseInt(cpf.charAt(9))) return false;
-        // Valida 2º dígito
+        // Valida 2Âº dÃ­gito
         add = 0;
         for (let i = 0; i < 10; i++) add += parseInt(cpf.charAt(i)) * (11 - i);
         rev = 11 - (add % 11);
@@ -186,25 +186,25 @@ $(document).ready(function () {
 });
 
 
-// Função para avançar para o próximo slide
+// FunÃ§Ã£o para avanÃ§ar para o prÃ³ximo slide
 function nextSlide() {
     $('.carousel').slick('slickNext');
 }
 
-// Função para voltar para o slide anterior
+// FunÃ§Ã£o para voltar para o slide anterior
 function prevSlide() {
     $('.carousel').slick('slickPrev');
 }
 
-// Atribua as funções aos eventos de clique dos botões
+// Atribua as funÃ§Ãµes aos eventos de clique dos botÃµes
 $('.carousel-button.next').click(nextSlide);
 $('.carousel-button.prev').click(prevSlide);
 
 $(document).ready(function () {
-    // Ocultar botões originais do Slick Carousel
+    // Ocultar botÃµes originais do Slick Carousel
     $('.slick-prev, .slick-next').hide();
 
-    // Vincular eventos aos botões de navegação personalizados
+    // Vincular eventos aos botÃµes de navegaÃ§Ã£o personalizados
     $('.carousel-button.prev').click(function () {
         $('.slick-slider').slick('slickPrev');
     });
@@ -303,7 +303,7 @@ function exibirAlerta(mensagem) {
     $('.alert-overlay').fadeIn();
 }
 
-// Ocultar overlay do alerta ao clicar no botão "Fechar"
+// Ocultar overlay do alerta ao clicar no botÃ£o "Fechar"
 $('.alert-overlay .close-btn').click(function () {
     $('.alert-overlay').fadeOut();
 });
@@ -312,10 +312,10 @@ $('.alert-overlay .close-btn').click(function () {
 
 //TESTE DE LOGIN////////////////////
 
-// Variável para armazenar o nome do usuário logado
+// VariÃ¡vel para armazenar o nome do usuÃ¡rio logado
 var nomeUsuario = localStorage.getItem("nomeUsuario");
 
-// Função para verificar o login
+// FunÃ§Ã£o para verificar o login
 function verificarLogin() {
     var usuario = document.getElementById("login-usuario").value;
     var senha = document.getElementById("login-senha").value;
@@ -323,53 +323,53 @@ function verificarLogin() {
     // Verificar as credenciais (exemplo simples)
     if (usuario === "admin" && senha === "senha123") {
         // Login bem-sucedido
-        document.getElementById("login-usuario").value = ""; // Limpar o campo de usuário
+        document.getElementById("login-usuario").value = ""; // Limpar o campo de usuÃ¡rio
         document.getElementById("login-senha").value = ""; // Limpar o campo de senha
 
         // Fechar o evento de login
         $('.login-overlay').fadeOut();
 
-        // Salvar o nome de usuário no localStorage
+        // Salvar o nome de usuÃ¡rio no localStorage
         localStorage.setItem("nomeUsuario", usuario);
 
-        // Atualizar o valor da variável nomeUsuario
+        // Atualizar o valor da variÃ¡vel nomeUsuario
         nomeUsuario = usuario;
 
-        // Exibir o nome do usuário no botão de login
+        // Exibir o nome do usuÃ¡rio no botÃ£o de login
         document.getElementById("login-btn").innerText = nomeUsuario;
 
 
     } else {
         // Exibir mensagem de erro de login
-        exibirAlerta("Credenciais inválidas");
+        exibirAlerta("Credenciais invÃ¡lidas");
     }
 
-    // Exibir o botão de logout
+    // Exibir o botÃ£o de logout
     $('#logout-btn').show();
 
 }
-// Função para exibir um alerta na tela
+// FunÃ§Ã£o para exibir um alerta na tela
 function exibirAlerta(mensagem) {
     document.getElementById("alert-message").innerText = mensagem;
     $('.alert-overlay').fadeIn();
 
-    // Fechar o alerta ao clicar no botão "Fechar"
+    // Fechar o alerta ao clicar no botÃ£o "Fechar"
     $('.close-btn').click(function () {
         $('.alert-overlay').fadeOut();
     });
 }
 
-// Exibir overlay de login ao clicar no botão "Entrar"
+// Exibir overlay de login ao clicar no botÃ£o "Entrar"
 $('#login-btn').click(function () {
     $('.login-overlay').fadeIn();
 });
 
-// Ocultar overlay de login ao clicar no botão "Cancelar"
+// Ocultar overlay de login ao clicar no botÃ£o "Cancelar"
 $('#login-cancel').click(function () {
     $('.login-overlay').fadeOut();
 });
 
-// Verificar o login ao clicar no botão "Entrar" na tela de login
+// Verificar o login ao clicar no botÃ£o "Entrar" na tela de login
 $('#login-submit').click(function () {
     verificarLogin();
 });
@@ -381,42 +381,43 @@ $('#login-senha').keypress(function (e) {
     }
 });
 
-// Verificar se há um nome de usuário armazenado e exibir no botão de login
+// Verificar se hÃ¡ um nome de usuÃ¡rio armazenado e exibir no botÃ£o de login
 if (nomeUsuario) {
     document.getElementById("login-btn").innerText = nomeUsuario;
 }
 
-// Função para fazer logout e apagar as informações do localStorage
+// FunÃ§Ã£o para fazer logout e apagar as informaÃ§Ãµes do localStorage
 
 function fazerLogout() {
-    // Remover o nome de usuário do localStorage
+    // Remover o nome de usuÃ¡rio do localStorage
     localStorage.removeItem("nomeUsuario");
 
-    // Atualizar o valor da variável nomeUsuario
+    // Atualizar o valor da variÃ¡vel nomeUsuario
     nomeUsuario = null;
 
-    // Atualizar o texto do botão de login
+    // Atualizar o texto do botÃ£o de login
     document.getElementById("login-btn").innerText = "Entrar";
 
-    // Ocultar o botão de logout
+    // Ocultar o botÃ£o de logout
     $('#logout-btn').hide();
 
-    //  exibir o botão de logout
+    //  exibir o botÃ£o de logout
     document.getElementById("logout-btn").classList.add("show");
 }
 
 $(document).ready(function () {
-    // Adicionar evento de clique ao botão de logout
+    // Adicionar evento de clique ao botÃ£o de logout
     $('#logout-btn').click(function () {
         fazerLogout();
     });
 
-    // Limpar informações e ocultar o botão "Logout" ao clicar nele
+    // Limpar informaÃ§Ãµes e ocultar o botÃ£o "Logout" ao clicar nele
     $('#logout-btn').click(function () {
-        // Limpar informações aqui
-        // Exemplo: Limpar informações do usuário atual
+        // Limpar informaÃ§Ãµes aqui
+        // Exemplo: Limpar informaÃ§Ãµes do usuÃ¡rio atual
 
-        // Ocultar o botão "Logout"
+        // Ocultar o botÃ£o "Logout"
         $(this).hide();
     });
 });
+
