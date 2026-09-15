@@ -10,10 +10,10 @@ export default function HomeView({ store }) {
     `${import.meta.env.BASE_URL}assets/001.jpg`,
     document.baseURI,
   ).href;
-  const wallpaper = `url("${wallpaperUrl}")`;
   return (
     <>
-      <section className="hero" style={{ '--hero-wallpaper': wallpaper }}>
+      <section className="hero">
+        <img className="hero-wallpaper" src={wallpaperUrl} alt="" aria-hidden="true" />
         <div className="hero-copy">
           <span className="eyebrow">Sua próxima campanha começa aqui</span>
           <h1>Jogos que ficam na memória.</h1>
