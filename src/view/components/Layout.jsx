@@ -1,7 +1,19 @@
+import { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import AuthModal from './AuthModal';
+import AddToCartNotification from './AddToCartNotification';
+import Toast from './Toast';
 
 export default function Layout({ store, children }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const { cartNotification, setCartNotification } = store;
+
+  useEffect(() => {
+    if (!cartNotification) return;
+    const timer = window.setTimeout(() => setCartNotification(null), 3000);
+    return () => window.clearTimeout(timer);
+  }, [cartNotification, setCartNotification]);
+
   return (
     <div className="app-shell">
       <header className="site-header">
@@ -9,7 +21,19 @@ export default function Layout({ store, children }) {
           <span className="brand-mark">CG</span>
           <span>Checkpoint Games</span>
         </Link>
-        <nav className="main-nav">
+        <button
+          className="menu-toggle"
+          type="button"
+          aria-expanded={menuOpen}
+          aria-controls="main-navigation"
+          aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'}
+          onClick={() => setMenuOpen((current) => !current)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+        <nav id="main-navigation" className={`main-nav ${menuOpen ? 'is-open' : ''}`}>
           {[
             ['/', 'Início'],
             ['/produtos', 'Produtos'],
@@ -18,7 +42,12 @@ export default function Layout({ store, children }) {
             ['/pedidos', 'Pedidos'],
             ['/contato', 'Contato'],
           ].map(([to, label]) => (
-            <NavLink key={to} to={to} className={({ isActive }) => (isActive ? 'active' : '')}>
+            <NavLink
+              key={to}
+              to={to}
+              className={({ isActive }) => (isActive ? 'active' : '')}
+              onClick={() => setMenuOpen(false)}
+            >
               {label}
             </NavLink>
           ))}
@@ -39,6 +68,12 @@ export default function Layout({ store, children }) {
         </div>
       </header>
       <main>{children}</main>
+      {cartNotification && (
+        <AddToCartNotification
+          product={cartNotification}
+          onClose={() => setCartNotification(null)}
+        />
+      )}
       <footer className="site-footer">
         <span>Checkpoint Games</span>
         <span>contato@lojadejogos.com</span>
@@ -53,10 +88,9 @@ export default function Layout({ store, children }) {
         />
       )}
       {store.notice && (
-        <div className="toast" role="status" onClick={() => store.setNotice('')}>
-          {store.notice}
-        </div>
+        <Toast message={store.notice} onClose={() => store.setNotice('')} />
       )}
     </div>
   );
 }
+

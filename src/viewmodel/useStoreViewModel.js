@@ -8,6 +8,7 @@ export function useStoreViewModel() {
   const [favorites, setFavorites] = useState(storage.getFavorites);
   const [authMode, setAuthMode] = useState(null);
   const [notice, setNotice] = useState('');
+  const [cartNotification, setCartNotification] = useState(null);
 
   useEffect(() => storage.saveCart(cart), [cart]);
   useEffect(() => storage.saveOrders(orders), [orders]);
@@ -28,7 +29,7 @@ export function useStoreViewModel() {
           )
         : [...current, { ...product, quantity: 1 }];
     });
-    setNotice(`${product.name} foi adicionado ao carrinho.`);
+    setCartNotification(product);
   }
 
   function updateQuantity(id, quantity) {
@@ -91,6 +92,8 @@ export function useStoreViewModel() {
     favorites,
     authMode,
     notice,
+    cartNotification,
+    setCartNotification,
     setAuthMode,
     setNotice,
     addToCart,

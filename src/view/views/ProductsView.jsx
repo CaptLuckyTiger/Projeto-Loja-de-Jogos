@@ -8,6 +8,7 @@ export default function ProductsView({ store, favoriteOnly = false }) {
   const [query, setQuery] = useState('');
   const [genre, setGenre] = useState('all');
   const [selected, setSelected] = useState(null);
+  const backgroundImage = `${import.meta.env.BASE_URL}assets/futuristic-moon-background.jpg`;
   const genres = useMemo(() => ['all', ...new Set(products.map((product) => product.genre))], []);
   const visibleProducts = useMemo(
     () =>
@@ -21,7 +22,15 @@ export default function ProductsView({ store, favoriteOnly = false }) {
     [query, genre, sort, favoriteOnly, store.favorites],
   );
   return (
-    <section className="section-block products-page">
+    <section
+      className="section-block products-page"
+      style={{
+        backgroundImage: `linear-gradient(rgba(5, 10, 22, 0.28), rgba(5, 10, 22, 0.48)), url(${backgroundImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
       <div className="page-intro">
         <div>
           <span className="eyebrow">{favoriteOnly ? 'Sua seleção' : 'Catálogo completo'}</span>

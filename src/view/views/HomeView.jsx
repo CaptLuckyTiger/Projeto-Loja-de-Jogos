@@ -1,18 +1,17 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { featuredProducts } from '../../model/products';
 import ProductCard from '../components/ProductCard';
 import ProductModal from '../components/ProductModal';
-import { useState } from 'react';
 
 export default function HomeView({ store }) {
   const [selected, setSelected] = useState(null);
-  const wallpaperUrl = new window.URL(
-    `${import.meta.env.BASE_URL}assets/001.jpg`,
-    document.baseURI,
-  ).href;
+  const wallpaperUrl = `${import.meta.env.BASE_URL}assets/001.jpg`;
+
   return (
     <>
-      <section className="hero">
+      <section className="hero" style={{ maxWidth: '100%' }}>
+        {/* Mobile: imagem ocupa menos espaço */}
         <img
           className="hero-wallpaper"
           src={wallpaperUrl}
@@ -28,9 +27,24 @@ export default function HomeView({ store }) {
           <Link className="primary-button" to="/produtos">
             Explorar catálogo
           </Link>
+          <div className="hero-stats" aria-label="Estatísticas da loja">
+            <div>
+              <strong>1200+</strong>
+              <span>títulos</span>
+            </div>
+            <div>
+              <strong>4.9/5</strong>
+              <span>avaliação</span>
+            </div>
+            <div>
+              <strong>24h</strong>
+              <span>entrega</span>
+            </div>
+          </div>
         </div>
       </section>
-      <section className="section-block">
+
+      <section className="section-block featured-section">
         <div className="section-heading">
           <div>
             <span className="eyebrow">Seleção da semana</span>
@@ -47,6 +61,8 @@ export default function HomeView({ store }) {
               product={product}
               onDetails={setSelected}
               onAdd={store.addToCart}
+              isFavorite={store.favorites.includes(product.id)}
+              onToggleFavorite={store.toggleFavorite}
             />
           ))}
         </div>
@@ -61,3 +77,5 @@ export default function HomeView({ store }) {
     </>
   );
 }
+
+
