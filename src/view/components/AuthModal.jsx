@@ -15,7 +15,11 @@ export default function AuthModal({ mode, onClose, onModeChange, onLogin, onRegi
   }, [onClose]);
   function submit(event) {
     event.preventDefault();
-    mode === 'login' ? onLogin(name) : onRegister({ name, email, password });
+    if (mode === 'login') {
+      onLogin(email, password);
+    } else {
+      onRegister({ name, email, password });
+    }
   }
   return (
     <div className="modal-backdrop" onClick={onClose}>
@@ -32,27 +36,29 @@ export default function AuthModal({ mode, onClose, onModeChange, onLogin, onRegi
         <span className="eyebrow">Checkpoint account</span>
         <h2 id="auth-modal-title">{mode === 'login' ? 'Entre na sua conta' : 'Crie sua conta'}</h2>
         <form onSubmit={submit}>
-          <label>
-            Nome
-            <input value={name} onChange={(event) => setName(event.target.value)} required />
-          </label>
           {mode === 'register' && (
             <label>
-              E-mail
-              <input
-                type="email"
-                value={email}
-                onChange={(event) => setEmail(event.target.value)}
-                required
-              />
+              Nome
+              <input value={name} onChange={(event) => setName(event.target.value)} required />
             </label>
           )}
+          <label>
+            E-mail
+            <input
+              type="email"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+              autoComplete="email"
+              required
+            />
+          </label>
           <label>
             Senha
             <input
               type="password"
               value={password}
               onChange={(event) => setPassword(event.target.value)}
+              autoComplete={mode === 'login' ? 'current-password' : 'new-password'}
               minLength="8"
               required
             />

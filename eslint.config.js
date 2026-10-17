@@ -17,7 +17,13 @@ export default [
       ecmaVersion: 'latest',
       sourceType: 'module',
       parserOptions: { ecmaFeatures: { jsx: true } },
-      globals: { document: 'readonly', localStorage: 'readonly', window: 'readonly' },
+      globals: {
+        document: 'readonly',
+        localStorage: 'readonly',
+        window: 'readonly',
+        crypto: 'readonly',
+        TextEncoder: 'readonly',
+      },
     },
   },
 ];

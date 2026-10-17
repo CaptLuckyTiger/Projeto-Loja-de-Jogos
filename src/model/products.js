@@ -7,6 +7,9 @@ export const products = [
     genre: 'Plataforma',
     image: 'assets/mario.jpg',
     description: 'Ajude Mario a resgatar a princesa Peach em uma aventura clássica e colorida.',
+    rating: 4.8,
+    isNew: true,
+    onSale: false,
   },
   {
     id: 'dying-light',
@@ -17,6 +20,10 @@ export const products = [
     image: 'assets/dynglight.jpg',
     description:
       'Sobreviva a uma cidade tomada por zumbis e explore cada canto em busca de recursos.',
+    rating: 4.6,
+    isNew: false,
+    onSale: true,
+    salePrice: 79.99,
   },
   {
     id: 'mortal-kombat',
@@ -26,6 +33,9 @@ export const products = [
     genre: 'Luta',
     image: 'assets/mortalkombat.jpg',
     description: 'Combates intensos, personagens icônicos e uma jogabilidade brutal.',
+    rating: 4.7,
+    isNew: false,
+    onSale: false,
   },
   {
     id: 'jumanji',
@@ -35,6 +45,10 @@ export const products = [
     genre: 'Ação e aventura',
     image: 'assets/jumanji.jpg',
     description: 'Entre em uma aventura divertida e sobreviva ao desafio de Jumanji.',
+    rating: 4.2,
+    isNew: false,
+    onSale: true,
+    salePrice: 49.99,
   },
   {
     id: 'avatar',
@@ -44,6 +58,9 @@ export const products = [
     genre: 'Ação e aventura',
     image: 'assets/avatar.jpg',
     description: 'Explore Pandora e participe do programa Avatar em uma aventura cinematográfica.',
+    rating: 4.1,
+    isNew: false,
+    onSale: false,
   },
   {
     id: 'valhalla',
@@ -53,6 +70,9 @@ export const products = [
     genre: 'Ação e aventura',
     image: 'assets/valhalla.jpg',
     description: 'Torne-se Eivor, um lendário invasor Viking em busca de glória.',
+    rating: 4.9,
+    isNew: false,
+    onSale: false,
   },
   {
     id: 'watchdogs',
@@ -62,6 +82,10 @@ export const products = [
     genre: 'Ação e aventura em terceira pessoa',
     image: 'assets/watchdogs.jpg',
     description: 'Recrute qualquer pessoa da cidade e enfrente uma corporação corrupta em Londres.',
+    rating: 4.5,
+    isNew: false,
+    onSale: true,
+    salePrice: 179.99,
   },
   {
     id: 'madagascar',
@@ -71,6 +95,9 @@ export const products = [
     genre: 'Aventura',
     image: 'assets/madagascar.jpg',
     description: 'Ajude os personagens do filme a escaparem do zoológico e voltarem para casa.',
+    rating: 4.0,
+    isNew: false,
+    onSale: false,
   },
   {
     id: 'miles',
@@ -80,6 +107,9 @@ export const products = [
     genre: 'Ação e aventura',
     image: 'assets/miles.jpeg',
     description: 'Balance por uma Manhattan coberta de neve como o novo Spider-Man.',
+    rating: 4.9,
+    isNew: true,
+    onSale: false,
   },
   {
     id: 'dead-island',
@@ -89,6 +119,9 @@ export const products = [
     genre: 'RPG e ação',
     image: 'assets/dead.jpg',
     description: 'Explore uma Los Angeles mítica, vibrante e coberta de sangue.',
+    rating: 4.7,
+    isNew: false,
+    onSale: false,
   },
   {
     id: 'horizon',
@@ -98,6 +131,9 @@ export const products = [
     genre: 'RPG de ação',
     image: 'assets/horizon.jpeg',
     description: 'Descubra um futuro pós-apocalíptico dominado por criaturas robóticas.',
+    rating: 4.8,
+    isNew: false,
+    onSale: false,
   },
   {
     id: 'guardians',
@@ -107,6 +143,10 @@ export const products = [
     genre: 'Ação e aventura',
     image: 'assets/guardians.jpg',
     description: 'Lidere os Guardiões em uma missão para salvar a galáxia.',
+    rating: 4.6,
+    isNew: false,
+    onSale: true,
+    salePrice: 219.99,
   },
   {
     id: 'doom-eternal',
@@ -116,6 +156,9 @@ export const products = [
     genre: 'Ação e tiro',
     image: 'assets/doom.jpeg',
     description: 'Enfrente hordas demoníacas em combates velozes e intensos para salvar a Terra.',
+    rating: 4.9,
+    isNew: true,
+    onSale: false,
   },
   {
     id: 'hogwarts-legacy',
@@ -125,6 +168,10 @@ export const products = [
     genre: 'RPG e aventura',
     image: 'assets/hogwarts.jpeg',
     description: 'Explore Hogwarts no século XIX e descubra o seu próprio caminho mágico.',
+    rating: 4.8,
+    isNew: false,
+    onSale: true,
+    salePrice: 199.99,
   },
   {
     id: 'gta-v',
@@ -135,8 +182,25 @@ export const products = [
     image: 'assets/gta0001.jpg',
     description:
       'Explore Los Santos em uma história de crime, ambição e liberdade em um mundo aberto.',
+    rating: 4.9,
+    isNew: false,
+    onSale: false,
   },
 ];
+
+export function getProductDisplayPrice(product) {
+  if (product.onSale && product.salePrice !== undefined) {
+    return product.salePrice;
+  }
+  return product.price;
+}
+
+export function getProductPriceForCart(product) {
+  if (product.onSale && product.salePrice !== undefined) {
+    return product.salePrice;
+  }
+  return product.price;
+}
 
 export const featuredProducts = ['gta-v', 'watchdogs', 'dead-island'].map((id) =>
   products.find((product) => product.id === id),

@@ -20,18 +20,18 @@ export default function CartView({ store }) {
   const [checkout, setCheckout] = useState(initialCheckout);
 
   const shippingPrice = checkout.shipping === 'express' ? 19.9 : 0;
-  const total = Math.max(0, store.subtotal * (1 - discount) + shippingPrice);
+  const effectiveDiscount = store.discount || discount;
+  const total = Math.max(0, store.subtotal * (1 - effectiveDiscount) + shippingPrice);
   const itemCount = useMemo(
     () => store.cart.reduce((sum, item) => sum + item.quantity, 0),
     [store.cart],
   );
 
   function applyCoupon() {
-    if (coupon.trim().toUpperCase() === 'UTFPR') {
-      setDiscount(0.15);
-      store.setNotice('Cupom aplicado: 15% de desconto.');
+    if (store.applyCouponCode(coupon)) {
+      setDiscount(store.discount);
     } else {
-      store.setNotice('Cupom inválido.');
+      setDiscount(0);
     }
     setCoupon('');
   }
@@ -64,7 +64,7 @@ export default function CartView({ store }) {
             <span className="eyebrow">Resumo do pedido</span>
             <h1>Seu carrinho</h1>
           </div>
-          {store.user && <p>Olá, {store.user}.</p>}
+          {store.user && <p>Olá, {store.user.name}.</p>}
         </div>
         <div className="empty-panel">
           <h2>{finished ? 'Compra finalizada!' : 'Seu carrinho está vazio.'}</h2>
@@ -88,7 +88,7 @@ export default function CartView({ store }) {
           <span className="eyebrow">Resumo do pedido</span>
           <h1>Seu carrinho</h1>
         </div>
-        {store.user && <p>Olá, {store.user}.</p>}
+        {store.user && <p>Olá, {store.user.name}.</p>}
       </div>
       <div className="cart-layout">
         <div className="cart-table">
@@ -108,6 +108,7 @@ export default function CartView({ store }) {
               <input
                 type="number"
                 min="1"
+                max="99"
                 value={item.quantity}
                 onChange={(event) => store.updateQuantity(item.id, event.target.value)}
                 aria-label={`Quantidade de ${item.name}`}
@@ -136,10 +137,10 @@ export default function CartView({ store }) {
             <span>Subtotal</span>
             <span>{formatPrice(store.subtotal)}</span>
           </div>
-          {discount > 0 && (
+          {(store.discount > 0 || discount > 0) && (
             <div className="summary-line discount">
               <span>Desconto</span>
-              <span>-15%</span>
+              <span>-{Math.round((store.discount || discount) * 100)}%</span>
             </div>
           )}
           <div className="summary-line">

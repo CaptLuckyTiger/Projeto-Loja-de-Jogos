@@ -6,6 +6,8 @@ import ProductsView from './views/ProductsView';
 import CartView from './views/CartView';
 import ContactView from './views/ContactView';
 import OrdersView from './views/OrdersView';
+import ProductDetailView from './views/ProductDetailView';
+import ComparisonView from './views/ComparisonView';
 
 export default function App() {
   const store = useStoreViewModel();
@@ -18,6 +20,8 @@ export default function App() {
         <Route path="/carrinho" element={<CartView store={store} />} />
         <Route path="/contato" element={<ContactView />} />
         <Route path="/pedidos" element={<OrdersView store={store} />} />
+        <Route path="/produto/:id" element={<ProductDetailView store={store} />} />
+        <Route path="/comparar" element={<ComparisonView store={store} />} />
       </Routes>
     </Layout>
   );

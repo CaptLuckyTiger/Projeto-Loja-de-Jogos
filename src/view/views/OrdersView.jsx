@@ -11,7 +11,7 @@ export default function OrdersView({ store }) {
           <span className="eyebrow">Sua conta</span>
           <h1>Histórico de pedidos.</h1>
         </div>
-        <p>{store.user ? `Pedidos de ${store.user}` : 'Pedidos salvos neste navegador'}</p>
+        <p>{store.user ? `Pedidos de ${store.user.name}` : 'Pedidos salvos neste navegador'}</p>
       </div>
       {store.orders.length === 0 ? (
         <div className="empty-panel">
